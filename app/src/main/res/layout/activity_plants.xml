@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboard">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorTransparent"
+        >
+    <TextView
+        android:id="@+id/txtPlant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plants"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:gravity="center"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="55dp">
+
+    <ListView
+        android:id="@+id/list_viewPlants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBg"
+
+        ></ListView>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

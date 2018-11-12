@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/dashboard" android:title="Dashboard" android:icon="@drawable/ic_dashboard_24dp" />
+    <item android:id="@+id/addnewplants" android:title="Add Plant" android:icon="@drawable/ic_add_circle_outline_24dp"/>
+    <item android:id="@+id/plants" android:title="Plants" android:icon="@drawable/ic_description_24dp"/>
+
+
+
+
+</menu>
