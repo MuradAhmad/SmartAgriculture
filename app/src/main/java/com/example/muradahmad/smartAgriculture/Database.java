@@ -21,7 +21,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String RSSI = "Rssi";
     public static final String TEMPERATURE = "Temperature";
     public static final String HUMIDITY = "Humidity";
-    public static final String PRESSURE = "Pressure";
+    //public static final String PRESSURE = "Pressure";
     public static final String DATE = "Timestamp";
 
     // Plants Table

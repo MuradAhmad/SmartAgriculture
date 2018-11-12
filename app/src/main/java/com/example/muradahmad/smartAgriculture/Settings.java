@@ -1,6 +1,9 @@
 package com.example.muradahmad.smartAgriculture;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +30,8 @@ public class Settings extends Fragment{
     RuuviTag ruuviTag;
 
     private ListView listView;
+    public static final String CHANNEL_1_ID = "channel1";
+
 
 
     @Nullable
@@ -36,6 +41,10 @@ public class Settings extends Fragment{
 
 
         btnSelectSensor = view.findViewById(R.id.btnSensor);
+
+
+
+        createNotificationChannels();
 
 
 /*
@@ -58,6 +67,20 @@ public class Settings extends Fragment{
         return view;
     }
 
+    private void createNotificationChannels() {
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel1 = new NotificationChannel(CHANNEL_1_ID, "Channel 1",
+                    NotificationManager.IMPORTANCE_HIGH);
+            channel1.setDescription("This is Channel 1");
+
+
+            NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel1);
+
+
+        }
+    }
 
 }

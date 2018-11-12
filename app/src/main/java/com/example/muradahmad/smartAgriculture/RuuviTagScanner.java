@@ -128,6 +128,7 @@ public class RuuviTagScanner extends Service {
         dbHandler = new Database(getApplicationContext());
         db = dbHandler.getWritableDatabase();
 
+
 /*
         beaconManager = BeaconManager.getInstanceForApplication(this);
         // Detect the URL frame:
@@ -293,7 +294,7 @@ public class RuuviTagScanner extends Service {
                                 Log.d("Temperature", real.getTemperature());
 
                                 Log.d("Humidity", real.getHumidity());
-                                Log.d("Pressure", real.getPressure());
+
                                 update(real);
 
 /*
@@ -353,9 +354,9 @@ public class RuuviTagScanner extends Service {
                             }
                         });*/
             }
-          /*  plotSource.addScanEvent(scanEvent);
+          /*  plotSource.addScanEvent(scanEvent); */
 
-            exportRuuvitags();*/
+            exportRuuvitags();
         }
 
 
@@ -421,7 +422,7 @@ public class RuuviTagScanner extends Service {
         startForeground(notificationId, notification.build());
     }
 
-
+   
 
 
     public void save(RuuviTag ruuvitag) {
@@ -434,7 +435,7 @@ public class RuuviTagScanner extends Service {
             values.put(Database.RSSI, ruuvitag.getRssi());
             values.put(Database.TEMPERATURE, ruuvitag.getTemperature());
             values.put(Database.HUMIDITY, ruuvitag.getHumidity());
-            values.put(Database.PRESSURE, ruuvitag.getPressure());
+            //values.put(Database.PRESSURE, ruuvitag.getPressure());
             values.put(Database.DATE, time);
             //values.put(DBContract.RuuvitagDB.COLUMN_VALUES, "-500,-500,-500,-500,-500,-500,-500,-500");
 
@@ -454,10 +455,13 @@ public class RuuviTagScanner extends Service {
             values.put(Database.RSSI, ruuvitag.getRssi());
             values.put(Database.TEMPERATURE, ruuvitag.getTemperature());
             values.put(Database.HUMIDITY, ruuvitag.getHumidity());
-            values.put(Database.PRESSURE, ruuvitag.getPressure());
+            //values.put(Database.PRESSURE, ruuvitag.getPressure());
             values.put(Database.DATE, time);
 
             db.update(Database.DEVICE_TABLE, values, "id="+ DatabaseUtils.sqlEscapeString(ruuvitag.getId()), null);
+        }
+        else {
+            save(ruuvitag);
         }
     }
 
@@ -519,6 +523,20 @@ public class RuuviTagScanner extends Service {
             }
         }
         return false;
+    }
+
+    private void exportRuuvitags() {
+        ArrayList<RuuviTag> templist = new ArrayList<>();
+        RuuvitagComplexList ruuvilist = new RuuvitagComplexList();
+        for(RuuviTag ruuvitag : ruuvitagArrayList) {
+            if(!ruuvitag.favorite)
+                templist.add(ruuvitag);
+        }
+        ruuvilist.setRuuvitags(templist);
+      /*  ComplexPreferences complexPreferences = ComplexPreferences
+                .getComplexPreferences(this, "saved_tags", MODE_PRIVATE);
+        complexPreferences.putObject("ruuvi", ruuvilist);
+        complexPreferences.commit();*/
     }
 
 

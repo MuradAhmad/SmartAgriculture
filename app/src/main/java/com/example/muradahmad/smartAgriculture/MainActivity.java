@@ -188,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
             txtTemperature.setText("100");*/
 
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1234);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1235);
 
 
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
@@ -434,6 +435,9 @@ public class MainActivity extends AppCompatActivity {
         int permissionCoarseLocation = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION);
 
+        int permissionFineLocation = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+
         int permissionWriteExternal = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -441,6 +445,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (permissionCoarseLocation != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (permissionFineLocation != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
         if (permissionWriteExternal != PackageManager.PERMISSION_GRANTED) {

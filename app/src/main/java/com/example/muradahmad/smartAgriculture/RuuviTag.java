@@ -118,9 +118,11 @@ public void process()
         }
         else if(rawData != null)
         {
+                // added by murad to check humidity
+                humidity = ((rawData[3] & 0xFF) << 8 | rawData[4] & 0xFF) / 400d;
         //   humidity = (rawData[3]) * 0.5;
 
-        humidity = ((float) (rawData[1] & 0xFF)) / 2f;
+       // commit by murad humidity = ((float) (rawData[1] & 0xFF)) / 2f;
 
         double uTemp = (((rawData[4] & 127) << 8) | rawData[5]);
         double tempSign = (rawData[4] >> 7) & 1;
@@ -184,7 +186,7 @@ private void parseByteData(int[] pData, int ruuviTagFWVersion ) {
         pressure /= 100.00;
         pressure = (pData[7] << 8) + pData[6];
         } else {
-        humidity = (pData[1])*0.5;//(int)((pData[1] >> 2) << 11);
+        humidity =  (pData[1])*0.5;//(int)((pData[1] >> 2) << 11); humidity =      ((pData[3 + ruuviTagFWVersion] & 0xFF) << 8 | pData[4 + ruuviTagFWVersion] & 0xFF) / 400d;
         double uTemp = (((pData[2] & 127) << 8) | pData[3]);
         double  tempSign = (pData[2] >> 7) & 1;
         temperature = tempSign == 0.00 ? uTemp / 256.0 : -1.00 * uTemp / 256.0;

@@ -1,7 +1,9 @@
 package com.example.muradahmad.smartAgriculture;
 
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,6 +40,7 @@ public class Dashboard extends Fragment {
 
 
 
+    String strTemperature;
 
 
 
@@ -101,9 +104,7 @@ public class Dashboard extends Fragment {
             public void run() {
                 //Whatever task you wish to perform
                 //For eg. textView.setText("SOME TEXT")
-                cursor = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE +
-                                " ORDER BY "+Database.DATE + " DESC"
-                        , new String[] {});
+                cursor = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
 
                 if (cursor != null) {
                     cursor.moveToFirst();
@@ -120,6 +121,9 @@ public class Dashboard extends Fragment {
                         txtTemperature.setText(temperature + " °C ");
                         txtHumidity.setText(humidity + " % ");
 
+
+                       // strTemperature =temperature;
+
                         Log.d("Device ID from Main: ", deviceId);
                         Log.d("Temperature from Main: ", temperature);
                         Log.d("Humidity from Main: ", humidity);
@@ -131,6 +135,17 @@ public class Dashboard extends Fragment {
 
         threadHandler.postDelayed(runnable, 1000);
 
+
+
+        // send users notifications from here
+
+
+
+     /*   if(Integer.valueOf(strTemperature) <10 || Integer.valueOf(strTemperature) > 35) {
+
+            Intent intent = new Intent(getContext(), NotificationReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }*/
 
 
         return view;
