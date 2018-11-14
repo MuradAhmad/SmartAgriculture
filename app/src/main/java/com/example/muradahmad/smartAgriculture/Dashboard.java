@@ -18,6 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.Region;
 
@@ -146,6 +150,27 @@ public class Dashboard extends Fragment {
             Intent intent = new Intent(getContext(), NotificationReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         }*/
+
+
+     //Graph
+        GraphView graph = (GraphView) view.findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        LineGraphSeries<DataPoint> seriesTemperature = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        LineGraphSeries<DataPoint> seriesHumidity = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        graph.addSeries(series);
+
 
 
         return view;
