@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,7 +17,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.Region;
@@ -122,7 +128,7 @@ public class Dashboard extends Fragment {
                         txtHumidity.setText(humidity + " % ");
 
 
-                       // strTemperature =temperature;
+                        strTemperature =temperature;
 
                         Log.d("Device ID from Main: ", deviceId);
                         Log.d("Temperature from Main: ", temperature);
@@ -138,15 +144,56 @@ public class Dashboard extends Fragment {
 
 
         // send users notifications from here
+        // calculate the temperature and humidity for plant
+        //
 
 
 
-     /*   if(Integer.valueOf(strTemperature) <10 || Integer.valueOf(strTemperature) > 35) {
+
+/*
+        if(Integer.valueOf(strTemperature) <10.0 || Integer.valueOf(strTemperature) > 35.0) {
 
             Intent intent = new Intent(getContext(), NotificationReceiver.class);
+it
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         }*/
 
+        //Graph
+        GraphView graph = (GraphView) view.findViewById(R.id.graph);
+        graph.getViewport().setScalable(true);
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 4),
+                new DataPoint(2, 3),
+                new DataPoint(3, 5),
+
+        });
+        LineGraphSeries<DataPoint> seriesTemperature = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 3),
+                new DataPoint(1, 2),
+                new DataPoint(2, 4),
+                new DataPoint(3, 1),
+        });
+
+
+        //maybe if statement here to determine which graph to show
+        seriesTemperature.setColor(Color.RED);
+        graph.addSeries(series);
+        graph.addSeries(seriesTemperature);
+
+
+        Button btn = (Button) view.findViewById(R.id.Switch_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                //do something with button here
+                Log.i("ASD", "button was pressed");
+
+            }
+        });
 
         return view;
 

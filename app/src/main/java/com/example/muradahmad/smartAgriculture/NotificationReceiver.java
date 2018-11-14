@@ -23,7 +23,10 @@ public class NotificationReceiver extends BroadcastReceiver {
         Intent activityIntent = new Intent(context, MainActivity.class);
         activityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+
         PendingIntent contentIntent = PendingIntent.getActivity(context,100,activityIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
         // Build notification
         // Actions
@@ -32,7 +35,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.ic_notification_24dp)
                 //.addAction(R.drawable.ic_notification_24dp, "Call", pendingIntent)
                 .setContentTitle("Plants feedback")
-                .setContentText("Temperature is not suitable for plant")
+                .setContentText("Temperature")
                 .setShowWhen(true)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

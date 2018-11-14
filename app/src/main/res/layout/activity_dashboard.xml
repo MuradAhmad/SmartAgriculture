@@ -5,6 +5,17 @@
     android:background="@drawable/dashboard"
     >
 
+    <Button
+        android:id="@+id/Switch_button"
+        android:layout_width="77dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="1"
+        android:text="Switch graph" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -63,7 +74,24 @@
                 />
      </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/transparent_white_rect">
 
 
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </RelativeLayout>

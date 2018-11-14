@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,9 +31,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.muradahmad.smartAgriculture.Dashboard" />
-        <activity android:name="com.example.muradahmad.smartAgriculture.Plants" />
-        <activity android:name="com.example.muradahmad.smartAgriculture.AddPlant" />
+        <activity android:name="com.example.muradahmad.smartAgriculture.Dashboard" android:screenOrientation="portrait" />
+        <activity android:name="com.example.muradahmad.smartAgriculture.Plants" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.muradahmad.smartAgriculture.AddPlant" android:screenOrientation="portrait"/>
         <activity android:name="com.example.muradahmad.smartAgriculture.Settings" />
 
 

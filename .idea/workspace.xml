@@ -10,25 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69553fec-d7e3-49de-ac25-32bfd32d61d9" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SmartAgriculture.iml" afterPath="$PROJECT_DIR$/smartAgriculture.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Database.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Settings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,18 +75,31 @@
       <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+            <state relative-caret-position="242">
+              <caret line="156" column="2" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="156" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DecimalFormat.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/DecimalFormat.class">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="87" column="72" lean-forward="false" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+            <state relative-caret-position="705">
+              <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_dashboard.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -95,12 +108,19 @@
       <file leaf-file-name="RuuviTag.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
+            <state relative-caret-position="1425">
               <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
-              <folding>
-                <element signature="e#1730#1731#0" expanded="true" />
-                <element signature="e#1759#1760#0" expanded="true" />
-              </folding>
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuuvitagComplexList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuvitagComplexList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,11 +128,31 @@
       <file leaf-file-name="NotificationReceiver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+            <state relative-caret-position="495">
+              <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Plants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Plants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Foreground.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Foreground.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2084,14 +2124,16 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java" />
         <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Settings.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuvitagComplexList.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Database.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java" />
       </list>
     </option>
@@ -2116,7 +2158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2131,9 +2172,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2223,7 +2265,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542057702959" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542224478555" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2271,7 +2313,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542057702960" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542224478555" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2433,7 +2475,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542057702961" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1542224478557" />
       </method>
     </configuration>
     <list size="1">
@@ -2520,59 +2562,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5805">
-          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="167" selection-start-column="7" selection-end-line="169" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/DecimalFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="87" column="72" lean-forward="false" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
-          <folding>
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4740">
           <caret line="356" column="52" lean-forward="false" selection-start-line="356" selection-start-column="52" selection-end-line="356" selection-end-column="52" />
           <folding />
@@ -2599,10 +2588,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1425">
           <caret line="124" column="7" lean-forward="false" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
-          <folding>
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2647,7 +2633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2708,7 +2693,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2716,10 +2700,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1425">
           <caret line="124" column="7" lean-forward="true" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
-          <folding>
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2735,25 +2716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
           <caret line="130" column="30" lean-forward="true" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
-          <folding>
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Foreground.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/AddTagAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2795,14 +2757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2818,7 +2772,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="83" column="5" lean-forward="false" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/NumberFormat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="209" column="27" lean-forward="false" selection-start-line="209" selection-start-column="27" selection-end-line="209" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/DecimalFormat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="87" column="72" lean-forward="false" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/database/sqlite/SQLiteClosable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/database/sqlite/SQLiteDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="1256" column="0" lean-forward="false" selection-start-line="1256" selection-start-column="0" selection-end-line="1256" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2827,16 +2830,93 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="50" column="19" lean-forward="false" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+        <state relative-caret-position="196">
+          <caret line="25" column="47" lean-forward="false" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Settings.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/AddPlant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="83" column="5" lean-forward="false" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+        <state relative-caret-position="-2205">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/AddTagAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1065">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/CustomAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-885">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-870">
+          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/DBModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-483">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/ExpandableAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-388">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Foreground.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="169" column="0" lean-forward="false" selection-start-line="167" selection-start-column="7" selection-end-line="169" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Plants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -2849,149 +2929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/NumberFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="209" column="27" lean-forward="false" selection-start-line="209" selection-start-column="27" selection-end-line="209" selection-end-column="27" />
-          <folding>
-            <element signature="e#6414#6415#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/icu/text/DecimalFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="87" column="72" lean-forward="false" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/database/sqlite/SQLiteClosable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#3238#0" expanded="false" />
-            <element signature="e#1400#1401#0" expanded="false" />
-            <element signature="e#1441#1442#0" expanded="false" />
-            <element signature="e#3200#3201#0" expanded="false" />
-            <element signature="e#3234#3235#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/database/sqlite/SQLiteDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="1256" column="0" lean-forward="false" selection-start-line="1256" selection-start-column="0" selection-end-line="1256" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32845#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4645#4646#0" expanded="false" />
-            <element signature="e#4678#4679#0" expanded="false" />
-            <element signature="e#5129#5130#0" expanded="false" />
-            <element signature="e#5166#5167#0" expanded="false" />
-            <element signature="e#5344#5345#0" expanded="false" />
-            <element signature="e#5385#5386#0" expanded="false" />
-            <element signature="e#5731#5732#0" expanded="false" />
-            <element signature="e#5776#5777#0" expanded="false" />
-            <element signature="e#6568#6569#0" expanded="false" />
-            <element signature="e#6601#6602#0" expanded="false" />
-            <element signature="e#11168#11169#0" expanded="false" />
-            <element signature="e#11211#11212#0" expanded="false" />
-            <element signature="e#11524#11525#0" expanded="false" />
-            <element signature="e#11573#11574#0" expanded="false" />
-            <element signature="e#13769#13770#0" expanded="false" />
-            <element signature="e#13832#13833#0" expanded="false" />
-            <element signature="e#21103#21104#0" expanded="false" />
-            <element signature="e#21155#21156#0" expanded="false" />
-            <element signature="e#21998#21999#0" expanded="false" />
-            <element signature="e#22047#22048#0" expanded="false" />
-            <element signature="e#22404#22405#0" expanded="false" />
-            <element signature="e#22459#22460#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="false" />
-            <element signature="e#27615#27616#0" expanded="false" />
-            <element signature="e#28451#28452#0" expanded="false" />
-            <element signature="e#28510#28511#0" expanded="false" />
-            <element signature="e#28687#28688#0" expanded="false" />
-            <element signature="e#28734#28735#0" expanded="false" />
-            <element signature="e#29195#29196#0" expanded="false" />
-            <element signature="e#29251#29252#0" expanded="false" />
-            <element signature="e#29432#29433#0" expanded="false" />
-            <element signature="e#29462#29463#0" expanded="false" />
-            <element signature="e#31504#31505#0" expanded="false" />
-            <element signature="e#31540#31541#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-26/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12231#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2534#2542#0" expanded="false" />
-            <element signature="e#3209#3210#0" expanded="false" />
-            <element signature="e#3238#3239#0" expanded="false" />
-            <element signature="e#7564#7565#0" expanded="false" />
-            <element signature="e#7605#7606#0" expanded="false" />
-            <element signature="e#7865#7866#0" expanded="false" />
-            <element signature="e#7905#7906#0" expanded="false" />
-            <element signature="e#8167#8168#0" expanded="false" />
-            <element signature="e#8223#8224#0" expanded="false" />
-            <element signature="e#8690#8691#0" expanded="false" />
-            <element signature="e#8724#8725#0" expanded="false" />
-            <element signature="e#8789#8790#0" expanded="false" />
-            <element signature="e#8825#8826#0" expanded="false" />
-            <element signature="e#9686#9687#0" expanded="false" />
-            <element signature="e#9720#9721#0" expanded="false" />
-            <element signature="e#10315#10316#0" expanded="false" />
-            <element signature="e#10348#10349#0" expanded="false" />
-            <element signature="e#10501#10502#0" expanded="false" />
-            <element signature="e#10531#10532#0" expanded="false" />
-            <element signature="e#10685#10686#0" expanded="false" />
-            <element signature="e#10714#10715#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="167" selection-start-column="7" selection-end-line="169" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTagScanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5805">
@@ -3000,21 +2937,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/RuuviTag.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+        <state relative-caret-position="705">
+          <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/NotificationReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
           <folding>
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/muradahmad/smartAgriculture/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+        <state relative-caret-position="242">
+          <caret line="156" column="2" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="156" selection-end-column="2" />
           <folding />
         </state>
       </provider>
