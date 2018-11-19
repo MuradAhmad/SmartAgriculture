@@ -1,6 +1,7 @@
 package com.example.muradahmad.smartAgriculture;
 
 import android.app.PendingIntent;
+import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -8,6 +9,10 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -35,8 +40,22 @@ import java.util.concurrent.ScheduledExecutorService;
  * Created by muradahmad on 07/08/2018.
  */
 
-public class Dashboard extends Fragment {
+public class Dashboard extends Fragment implements SensorEventListener {
 
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+        if(event.sensor.getType() == sensor.TYPE_LIGHT){
+            txtluminous.setText(""+ event.values[0]);
+            Log.d("sensor Light",""+ event.values[0]);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 
     private class LeScanResult {
         BluetoothDevice device;
@@ -80,9 +99,11 @@ public class Dashboard extends Fragment {
     private Region beaconRegion = null;
 
 
+    Sensor sensor;
+    SensorManager sensorManager;
 
 
-    TextView txtTemperature, txtHumidity, txtDeviceId;
+    TextView txtTemperature, txtHumidity, txtDeviceId,  txtluminous;
 
     @Nullable
     @Override
@@ -93,10 +114,13 @@ public class Dashboard extends Fragment {
         txtTemperature = view.findViewById(R.id.txtTemperature);
         txtDeviceId = view.findViewById(R.id.txtDeviceId);
         txtHumidity = view.findViewById(R.id.txtHumidity);
+        txtluminous = view.findViewById(R.id.txtlight);
 
 
 
 
+        sensorManager = (SensorManager) getContext().getSystemService(Service.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
 
         handler = new Database(getContext());
@@ -154,7 +178,7 @@ public class Dashboard extends Fragment {
         if(Integer.valueOf(strTemperature) <10.0 || Integer.valueOf(strTemperature) > 35.0) {
 
             Intent intent = new Intent(getContext(), NotificationReceiver.class);
-it
+
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         }*/
@@ -196,6 +220,20 @@ it
         });
 
         return view;
+
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
 
     }
 }

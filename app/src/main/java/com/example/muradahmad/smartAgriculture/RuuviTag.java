@@ -119,8 +119,8 @@ public void process()
         else if(rawData != null)
         {
                 // added by murad to check humidity
-                humidity = ((rawData[3] & 0xFF) << 8 | rawData[4] & 0xFF) / 400d;
-        //   humidity = (rawData[3]) * 0.5;
+            //    humidity = ((rawData[3] & 0xFF) << 8 | rawData[4] & 0xFF) / 400d;
+           humidity = (rawData[3]) * 0.5;
 
        // commit by murad humidity = ((float) (rawData[1] & 0xFF)) / 2f;
 

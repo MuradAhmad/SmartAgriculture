@@ -80,7 +80,7 @@ public class RuuviTagScanner extends Service {
     private boolean scanning;
 
 
-
+    String strTemperature, strHumidity;
 
 
     @Override
@@ -127,6 +127,11 @@ public class RuuviTagScanner extends Service {
 
         dbHandler = new Database(getApplicationContext());
         db = dbHandler.getWritableDatabase();
+
+
+        sendNotification();
+
+
 
 
 /*
@@ -212,7 +217,7 @@ public class RuuviTagScanner extends Service {
 
     void processFoundDevices() {
         ruuvitagArrayList.clear();
-       // ScanEvent scanEvent = new ScanEvent(getApplicationContext(), DeviceIdentifier.id(getApplicationContext()));
+        // ScanEvent scanEvent = new ScanEvent(getApplicationContext(), DeviceIdentifier.id(getApplicationContext()));
 
         Iterator<LeScanResult> itr = scanResults.iterator();
         while (itr.hasNext()) {
@@ -266,10 +271,7 @@ public class RuuviTagScanner extends Service {
 */
 
 
-
-
-
-                                // scanEvent.addRuuvitag(real);
+                            // scanEvent.addRuuvitag(real);
 
                             // add real object to a class ruuvitage from where data should extracted
 
@@ -297,9 +299,8 @@ public class RuuviTagScanner extends Service {
 
                                 update(real);
 
+
 /*
-
-
                                 String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
 
 
@@ -318,10 +319,6 @@ public class RuuviTagScanner extends Service {
 
 
 */
-
-
-
-
 
 
                                 //scanEvent.addRuuvitag(real);
@@ -353,13 +350,11 @@ public class RuuviTagScanner extends Service {
                                 // do stuff with the result or error
                             }
                         });*/
-            }
+        }
           /*  plotSource.addScanEvent(scanEvent); */
 
-            exportRuuvitags();
-        }
-
-
+        exportRuuvitags();
+    }
 
 
     public SharedPreferences.OnSharedPreferenceChangeListener mListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -399,8 +394,7 @@ public class RuuviTagScanner extends Service {
     };
 
 
-    public void startFG()
-    {
+    public void startFG() {
         Intent notificationIntent = new Intent(this, MainActivity.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
@@ -422,13 +416,11 @@ public class RuuviTagScanner extends Service {
         startForeground(notificationId, notification.build());
     }
 
-   
-
 
     public void save(RuuviTag ruuvitag) {
         String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
 
-        if(!Exists(ruuvitag.getId())) {
+        if (!Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
             values.put(Database.DEVICE_ID, ruuvitag.getId());
             values.put(Database.URL, ruuvitag.getUrl());
@@ -444,11 +436,10 @@ public class RuuviTagScanner extends Service {
     }
 
 
-
     public void update(RuuviTag ruuvitag) {
         String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
 
-        if(Exists(ruuvitag.getId())) {
+        if (Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
             values.put(Database.DEVICE_ID, ruuvitag.getId());
             values.put(Database.URL, ruuvitag.getUrl());
@@ -458,24 +449,19 @@ public class RuuviTagScanner extends Service {
             //values.put(Database.PRESSURE, ruuvitag.getPressure());
             values.put(Database.DATE, time);
 
-            db.update(Database.DEVICE_TABLE, values, "id="+ DatabaseUtils.sqlEscapeString(ruuvitag.getId()), null);
-        }
-        else {
+            db.update(Database.DEVICE_TABLE, values, "id=" + DatabaseUtils.sqlEscapeString(ruuvitag.getId()), null);
+        } else {
             save(ruuvitag);
         }
     }
 
     public boolean Exists(String id) {
-        cursor = db.rawQuery("select 1 from DEVICE_TABLE where "+Database.DEVICE_ID+"=?",
-                new String[] { id });
+        cursor = db.rawQuery("select 1 from DEVICE_TABLE where " + Database.DEVICE_ID + "=?",
+                new String[]{id});
         boolean exists = (cursor.getCount() > 0);
         cursor.close();
         return exists;
     }
-
-
-
-
 
 
     @Override
@@ -509,16 +495,17 @@ public class RuuviTagScanner extends Service {
 
         public void onBecameBackground() {
             if (!settings.getBoolean("pref_bgscan", false)) {
-               if (timer!=null) timer.cancel();
-                if (scheduler!= null) scheduler.shutdown();
+                if (timer != null) timer.cancel();
+                if (scheduler != null) scheduler.shutdown();
                 stopSelf();
             }
         }
     };
+
     private boolean isRunning(Class<?> serviceClass) {
         ActivityManager mgr = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for(ActivityManager.RunningServiceInfo service : mgr.getRunningServices(Integer.MAX_VALUE)) {
-            if(serviceClass.getName().equals(service.service.getClassName())) {
+        for (ActivityManager.RunningServiceInfo service : mgr.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
                 return true;
             }
         }
@@ -528,8 +515,8 @@ public class RuuviTagScanner extends Service {
     private void exportRuuvitags() {
         ArrayList<RuuviTag> templist = new ArrayList<>();
         RuuvitagComplexList ruuvilist = new RuuvitagComplexList();
-        for(RuuviTag ruuvitag : ruuvitagArrayList) {
-            if(!ruuvitag.favorite)
+        for (RuuviTag ruuvitag : ruuvitagArrayList) {
+            if (!ruuvitag.favorite)
                 templist.add(ruuvitag);
         }
         ruuvilist.setRuuvitags(templist);
@@ -540,14 +527,15 @@ public class RuuviTagScanner extends Service {
     }
 
 
-private boolean checkForSameTag(RuuviTag ruuvi) {
-        for(RuuviTag ruuvitag : ruuvitagArrayList) {
-        if(ruuvi.getId().equals(ruuvitag.getId())) {
-        return false;
-        }
+    private boolean checkForSameTag(RuuviTag ruuvi) {
+        for (RuuviTag ruuvitag : ruuvitagArrayList) {
+            if (ruuvi.getId().equals(ruuvitag.getId())) {
+                return false;
+            }
         }
         return true;
-        }
+    }
+
     public Integer[] readSeparated(String data) {
         String[] linevector;
         int index = 0;
@@ -556,7 +544,7 @@ private boolean checkForSameTag(RuuviTag ruuvi) {
 
         Integer[] values = new Integer[linevector.length];
 
-        for(String l : linevector) {
+        for (String l : linevector) {
             try {
                 values[index] = Integer.parseInt(l);
             } catch (NumberFormatException e) {
@@ -567,5 +555,40 @@ private boolean checkForSameTag(RuuviTag ruuvi) {
 
         return values;
     }
-}
 
+    public void sendNotification() {
+
+
+        cursor = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+
+            if (cursor.getCount() > 0) {
+// get values from cursor here
+
+
+                String temperature = cursor.getString(cursor.getColumnIndex(Database.TEMPERATURE));
+                String humidity = cursor.getString(cursor.getColumnIndex(Database.HUMIDITY));
+
+
+                strTemperature = temperature;
+                strHumidity = humidity;
+
+               //float temp= (Float.parseFloat(strTemperature));
+                //Log.d("strTemperature",String.valueOf(temp));
+               // Log.d("strTemperature",strTemperature);
+              //  Log.d("strHumidity",strHumidity);
+
+                if (Float.parseFloat(strTemperature) < 24.0 || Float.parseFloat(strTemperature) > 35.0) {
+
+                    Intent intent = new Intent(this, NotificationReceiver.class);
+
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                }
+
+            }
+        }
+
+    }
+}
