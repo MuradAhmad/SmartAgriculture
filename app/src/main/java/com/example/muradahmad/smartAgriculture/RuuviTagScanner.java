@@ -6,9 +6,11 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -92,7 +94,6 @@ public class RuuviTagScanner extends Service {
         return Service.START_NOT_STICKY;
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -100,6 +101,10 @@ public class RuuviTagScanner extends Service {
         settings.registerOnSharedPreferenceChangeListener(mListener);
         notificationId = 1512;
 
+        IntentFilter i = new IntentFilter();
+        i.addAction("send_notification");
+
+        registerReceiver(new NotificationReceiver(), i);
         // commited by me
 
       /*  titles = new String[]{ getString(R.string.alert_notification_title0),
@@ -456,8 +461,7 @@ public class RuuviTagScanner extends Service {
     }
 
     public boolean Exists(String id) {
-        cursor = db.rawQuery("select 1 from DEVICE_TABLE where " + Database.DEVICE_ID + "=?",
-                new String[]{id});
+        cursor = db.rawQuery("select 1 from DEVICE_TABLE where " + Database.DEVICE_ID + "=?", new String[]{id});
         boolean exists = (cursor.getCount() > 0);
         cursor.close();
         return exists;
@@ -575,16 +579,19 @@ public class RuuviTagScanner extends Service {
                 strTemperature = temperature;
                 strHumidity = humidity;
 
-               //float temp= (Float.parseFloat(strTemperature));
-                //Log.d("strTemperature",String.valueOf(temp));
-               // Log.d("strTemperature",strTemperature);
-              //  Log.d("strHumidity",strHumidity);
+               float temp= (Float.parseFloat(strTemperature));
+                Log.d("strTemperature",String.valueOf(temp));
+                Log.d("strTemperature",strTemperature);
+                Log.d("strHumidity",strHumidity);
 
                 if (Float.parseFloat(strTemperature) < 24.0 || Float.parseFloat(strTemperature) > 35.0) {
 
-                    Intent intent = new Intent(this, NotificationReceiver.class);
-
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    Intent intent = new Intent();
+                    intent.setAction("send_notification");
+                    intent.putExtra("temperature", strTemperature);
+                    sendBroadcast(intent);
+                    Log.d("sendingIntent","ok");
+                    //sPendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 }
 
             }
