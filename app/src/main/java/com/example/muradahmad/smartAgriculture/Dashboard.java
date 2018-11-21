@@ -14,6 +14,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,11 +29,16 @@ import android.widget.TextView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.opencsv.CSVWriter;
 
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.Region;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -85,7 +91,7 @@ public class Dashboard extends Fragment implements SensorEventListener {
 
     Database handler;
     SQLiteDatabase db;
-    Cursor cursor;
+    Cursor cursor, cursor1;
 
     private Timer timer;
     private Handler scanTimerHandler;
@@ -94,6 +100,7 @@ public class Dashboard extends Fragment implements SensorEventListener {
 
 
 
+    String filepath = "";
     private BeaconManager beaconManager = null;
 
     private Region beaconRegion = null;
@@ -116,6 +123,27 @@ public class Dashboard extends Fragment implements SensorEventListener {
         txtHumidity = view.findViewById(R.id.txtHumidity);
         txtluminous = view.findViewById(R.id.txtlight);
 
+
+
+        //File file = new File(filepath);
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "csvname.csv");
+
+
+        try {
+            file.createNewFile();
+
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            csvWrite.writeNext(cursor.getColumnNames());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -146,6 +174,9 @@ public class Dashboard extends Fragment implements SensorEventListener {
                         String deviceId = cursor.getString(cursor.getColumnIndex(Database.DEVICE_ID));
                         String temperature = cursor.getString(cursor.getColumnIndex(Database.TEMPERATURE));
                         String humidity = cursor.getString(cursor.getColumnIndex(Database.HUMIDITY));
+                        //String time = cursor.getString(cursor.getColumnIndex(Database.DATE));
+                        //String light = cursor.getString(cursor.getColumnIndex(Database.LIGHT));
+
 
                         txtDeviceId.setText(deviceId);
                         txtTemperature.setText(temperature + " °C ");
@@ -157,13 +188,38 @@ public class Dashboard extends Fragment implements SensorEventListener {
                         Log.d("Device ID from Main: ", deviceId);
                         Log.d("Temperature from Main: ", temperature);
                         Log.d("Humidity from Main: ", humidity);
+
+
+
+/*
+                        try {
+
+
+
+                            FileWriter outputfile = new FileWriter(file);
+
+                            CSVWriter writer = new CSVWriter(outputfile);
+
+                            // Once every minute, fetch values corresponding to this time and write this to the data csv.
+
+                            String[] data = {time, temperature, humidity, light};
+                            writer.writeNext(data);
+                        }
+
+                        catch (IOException error) {
+                            error.printStackTrace();
+                            //Log.d("asd", error.printStackTrace());
+                        }
+*/
+
+
                     }
                 }
-                threadHandler.postDelayed(this, 1000);
+                threadHandler.postDelayed(this, 50000);
             }
         };
 
-        threadHandler.postDelayed(runnable, 1000);
+        threadHandler.postDelayed(runnable, 60000);
 
 
 
@@ -187,7 +243,76 @@ public class Dashboard extends Fragment implements SensorEventListener {
         GraphView graph = (GraphView) view.findViewById(R.id.graph);
         graph.getViewport().setScalable(true);
 
+
+        //List<Integer> time_axis = new ArrayList<>();
+        //List<Integer> temperature_axis = new ArrayList<>();
+        //List<Integer> humidity_axis = new ArrayList<>();
+        //List<Integer> light_axis = new ArrayList<>();
+/*
+        cursor1 = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
+
+        public static void writeCSV(String filepath) {
+
+            File file = new File(filepath);
+
+
+            try {
+                FileWriter outputfile = new FileWriter(file);
+
+                CSVWriter writer = new CSVWriter(outputfile);
+
+                // Once every minute, fetch values corresponding to this time and write this to the data csv.
+
+                String[] data = {time, hum, temp};
+                writer.writeNext(Data);
+            }
+
+            catch (IOException error) {
+                error.printStackTrace();
+                //Log.d("asd", error.printStackTrace());
+            }
+        }
+
+        Dashboard.writeCSV("asd");
+        cursor1 = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
+
+        while (cursor1 != null & cursor1.moveToNext()) {
+            int graph_humidity = Integer.parseInt(cursor1.getString(cursor1.getColumnIndex(Database.HUMIDITY)));
+            Log.d("urgurg", String.valueOf(graph_humidity));
+            //humidity_axis.add(graph_humidity);
+
+            int graph_temp = Integer.parseInt(cursor1.getString(cursor1.getColumnIndex(Database.TEMPERATURE)));
+            String graph_time = String.valueOf(cursor1.getString(cursor1.getColumnIndex(Database.DATE)));
+            Log.d("asdasd", graph_time);
+            //time_axis.add(graph_time);
+
+            //light_axis.add(graph_light);
+
+            //tempperature_axis.add(graph_temp);
+
+            //String time_string = cursor1.getString(cursor1.getColumnIndex(Database.DATE));
+
+
+            //double graph_time = Double.parseDouble(cursor1.getString(cursor1.getColumnIndex(Database.DATE)));
+
+            String g_time = cursor1.getString(cursor1.getColumnIndex(Database.DATE));
+            //Log.d("funny_cats",String.valueOf(g_time));
+            //String deviceId = cursor1.getString(cursor1.getColumnIndex(Database.DEVICE_ID));
+            //String temperature = cursor1.getString(cursor1.getColumnIndex(Database.TEMPERATURE));
+            //String humidity = cursor1.getString(cursor1.getColumnIndex(Database.HUMIDITY));
+        };
+    }
+
+*/
+
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                //make loop to add datapoints
+                // for DataPoint in GraphData{
+                // int time =
+                // int temperature =
+                // new DataPoint(time, temperature)
+                //
+                //new DataPoint(graph_time, graph_temp),
                 new DataPoint(0, 1),
                 new DataPoint(1, 4),
                 new DataPoint(2, 3),
@@ -200,7 +325,6 @@ public class Dashboard extends Fragment implements SensorEventListener {
                 new DataPoint(2, 4),
                 new DataPoint(3, 1),
         });
-
 
         //maybe if statement here to determine which graph to show
         seriesTemperature.setColor(Color.RED);

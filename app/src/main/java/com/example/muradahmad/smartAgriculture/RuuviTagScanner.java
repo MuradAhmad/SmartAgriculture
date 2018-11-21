@@ -18,6 +18,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -29,10 +30,13 @@ import com.neovisionaries.bluetooth.ble.advertising.ADManufacturerSpecific;
 import com.neovisionaries.bluetooth.ble.advertising.ADPayloadParser;
 import com.neovisionaries.bluetooth.ble.advertising.ADStructure;
 import com.neovisionaries.bluetooth.ble.advertising.EddystoneURL;
+import com.opencsv.CSVWriter;
 
 import org.altbeacon.beacon.Region;
 import org.altbeacon.beacon.powersave.BackgroundPowerSaver;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -252,28 +256,12 @@ public class RuuviTagScanner extends Service {
                             update(real);
 
 
+                            exportDB();
 
 
 
-/*
-
-                            String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
 
 
-                                ContentValues values = new ContentValues();
-                                values.put(Database.DEVICE_ID, real.getId());
-                                values.put(Database.URL, real.getUrl());
-                                values.put(Database.RSSI, real.getRssi());
-                                values.put(Database.TEMPERATURE, real.getTemperature());
-                                values.put(Database.HUMIDITY, real.getHumidity());
-                                //values.put(Database.PRESSURE, ruuvitag.getPressure());
-                                values.put(Database.DATE, time);
-
-                                db.update(Database.DEVICE_TABLE, values, "id="+ DatabaseUtils.sqlEscapeString(real.getId()), null);
-
-
-
-*/
 
 
                             // scanEvent.addRuuvitag(real);
@@ -304,26 +292,8 @@ public class RuuviTagScanner extends Service {
 
                                 update(real);
 
+                                exportDB();
 
-/*
-                                String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
-
-
-                                ContentValues values = new ContentValues();
-                                values.put(Database.DEVICE_ID, real.getId());
-                                values.put(Database.URL, real.getUrl());
-                                values.put(Database.RSSI, real.getRssi());
-                                values.put(Database.TEMPERATURE, real.getTemperature());
-                                values.put(Database.HUMIDITY, real.getHumidity());
-                                //values.put(Database.PRESSURE, ruuvitag.getPressure());
-                                values.put(Database.DATE, time);
-
-                                dbHandler.insertDeviceData( values);
-
-                               // db.update(Database.DEVICE_TABLE, values, "id="+ DatabaseUtils.sqlEscapeString(real.getId()), null);
-
-
-*/
 
 
                                 //scanEvent.addRuuvitag(real);
@@ -428,6 +398,7 @@ public class RuuviTagScanner extends Service {
         if (!Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
             values.put(Database.DEVICE_ID, ruuvitag.getId());
+            //
             values.put(Database.URL, ruuvitag.getUrl());
             values.put(Database.RSSI, ruuvitag.getRssi());
             values.put(Database.TEMPERATURE, ruuvitag.getTemperature());
@@ -529,7 +500,109 @@ public class RuuviTagScanner extends Service {
         complexPreferences.putObject("ruuvi", ruuvilist);
         complexPreferences.commit();*/
     }
+    private void exportDB() {
 
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "ruuvitaglogs");
+
+        String time = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+
+        if (!exportDir.exists()) {
+
+            if (!exportDir.mkdirs()) {
+
+                Log.e("ScannerService", "failed to create directory");
+
+            }
+
+        }
+
+
+
+        try {
+
+            Cursor curCSV = db.rawQuery("SELECT * FROM ruuvitag", null);
+
+
+
+            String[] columnNames = {
+
+                    curCSV.getColumnName(1),
+
+                    curCSV.getColumnName(7),
+
+                    curCSV.getColumnName(3),
+
+                    curCSV.getColumnName(4),
+
+                    curCSV.getColumnName(5),
+
+                    curCSV.getColumnName(6),
+
+                    curCSV.getColumnName(8)
+
+            };
+
+
+
+            while (curCSV.moveToNext()) {
+
+                File file = new File(exportDir, curCSV.getString(1)+"-"+time+".csv");
+
+                FileWriter fw = new FileWriter(file, file.exists());
+
+
+
+                CSVWriter writer = new CSVWriter(fw);
+
+
+
+                if(file.length() <= 0) {
+
+                    writer.writeNext(columnNames);
+
+                }
+
+
+
+                String[] arrStr = {
+
+                        curCSV.getString(1),
+
+                        curCSV.getString(7),
+
+                        curCSV.getString(3),
+
+                        curCSV.getString(4),
+
+                        curCSV.getString(5),
+
+                        curCSV.getString(6),
+
+                        curCSV.getString(9).substring(12, 20)
+
+                };
+
+
+
+                writer.writeNext(arrStr);
+
+                writer.close();
+
+                fw.close();
+
+            }
+
+            curCSV.close();
+
+
+
+        } catch (Exception sqlEx) {
+
+            Log.e("ScannerService", sqlEx.getMessage(), sqlEx);
+
+        }
+
+    }
 
     private boolean checkForSameTag(RuuviTag ruuvi) {
         for (RuuviTag ruuvitag : ruuvitagArrayList) {
@@ -584,7 +657,7 @@ public class RuuviTagScanner extends Service {
                 Log.d("strTemperature",strTemperature);
                 Log.d("strHumidity",strHumidity);
 
-                if (Float.parseFloat(strTemperature) < 24.0 || Float.parseFloat(strTemperature) > 35.0) {
+                if (Float.parseFloat(strTemperature) < 10.0 || Float.parseFloat(strTemperature) > 35.0) {
 
                     Intent intent = new Intent();
                     intent.setAction("send_notification");

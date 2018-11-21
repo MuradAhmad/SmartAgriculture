@@ -21,7 +21,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String RSSI = "Rssi";
     public static final String TEMPERATURE = "Temperature";
     public static final String HUMIDITY = "Humidity";
-    //public static final String PRESSURE = "Pressure";
+    public static final String LIGHT = "Light";
     public static final String DATE = "Timestamp";
 
     // Plants Table
@@ -41,12 +41,12 @@ public class Database extends SQLiteOpenHelper {
 
 
     public Database(Context context) {
-        super(context, USER_DATABASE, null, 3);
+        super(context, USER_DATABASE, null, 4);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + DEVICE_TABLE + "(Id TEXT, Url TEXT, Rssi TEXT, Temperature TEXT, Humidity TEXT, Presure TEXT, Timestamp REAL )");
+        db.execSQL("create table " + DEVICE_TABLE + "(Id TEXT, Url TEXT, Rssi TEXT, Temperature TEXT, Humidity TEXT, Light TEXT, Timestamp REAL )");
         db.execSQL("create table " + PLANTS_TABLE + "(Plant_name TEXT, Timestamp REAL )");
     }
 
