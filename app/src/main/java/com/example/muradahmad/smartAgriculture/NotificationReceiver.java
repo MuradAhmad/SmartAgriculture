@@ -34,7 +34,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         createNotificationChannels(context);
 
 
-        String temperature = intent.getStringExtra("temperature");
+      //  String temperature = intent.getStringExtra("temperature");
         // Build notification
         // Actions
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_1_ID)
@@ -42,7 +42,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.ic_notification_24dp)
                 //.addAction(R.drawable.ic_notification_24dp, "Call", pendingIntent)
                 .setContentTitle("Plants feedback")
-                .setContentText("Temperature:" + temperature)
+               // .setContentText("Temperature:" + temperature)
                 .setShowWhen(true)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

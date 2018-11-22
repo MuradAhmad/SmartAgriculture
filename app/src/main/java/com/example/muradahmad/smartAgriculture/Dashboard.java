@@ -125,25 +125,6 @@ public class Dashboard extends Fragment implements SensorEventListener {
 
 
 
-        //File file = new File(filepath);
-        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
-        if (!exportDir.exists())
-        {
-            exportDir.mkdirs();
-        }
-
-        File file = new File(exportDir, "csvname.csv");
-
-
-        try {
-            file.createNewFile();
-
-            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            csvWrite.writeNext(cursor.getColumnNames());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
 
@@ -162,7 +143,7 @@ public class Dashboard extends Fragment implements SensorEventListener {
             public void run() {
                 //Whatever task you wish to perform
                 //For eg. textView.setText("SOME TEXT")
-                cursor = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
+                cursor = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE + " order by Timestamp desc limit 1 ", null);
 
                 if (cursor != null) {
                     cursor.moveToFirst();
@@ -215,11 +196,11 @@ public class Dashboard extends Fragment implements SensorEventListener {
 
                     }
                 }
-                threadHandler.postDelayed(this, 50000);
+                threadHandler.postDelayed(this, 1000);
             }
         };
 
-        threadHandler.postDelayed(runnable, 60000);
+        threadHandler.postDelayed(runnable, 1000);
 
 
 

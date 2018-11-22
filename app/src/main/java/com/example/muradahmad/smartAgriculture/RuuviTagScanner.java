@@ -105,10 +105,10 @@ public class RuuviTagScanner extends Service {
         settings.registerOnSharedPreferenceChangeListener(mListener);
         notificationId = 1512;
 
-        IntentFilter i = new IntentFilter();
-        i.addAction("send_notification");
+        //IntentFilter i = new IntentFilter();
+        //i.addAction("send_notification");
 
-        registerReceiver(new NotificationReceiver(), i);
+       // registerReceiver(new NotificationReceiver(), i);
         // commited by me
 
       /*  titles = new String[]{ getString(R.string.alert_notification_title0),
@@ -138,7 +138,7 @@ public class RuuviTagScanner extends Service {
         db = dbHandler.getWritableDatabase();
 
 
-        sendNotification();
+      // sendNotification();
 
 
 
@@ -393,7 +393,7 @@ public class RuuviTagScanner extends Service {
 
 
     public void save(RuuviTag ruuvitag) {
-        String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
+        String time = new SimpleDateFormat("dd-MM-yyyy, HH:mm:ss").format(new Date());
 
         if (!Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
@@ -413,7 +413,7 @@ public class RuuviTagScanner extends Service {
 
 
     public void update(RuuviTag ruuvitag) {
-        String time = new SimpleDateFormat("dd-MM-yyyy, hh:mm:ss").format(new Date());
+        String time = new SimpleDateFormat("dd-MM-yyyy, HH:mm:ss").format(new Date());
 
         if (Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
@@ -520,51 +520,11 @@ public class RuuviTagScanner extends Service {
 
         try {
 
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE, null);
-
-
-            //String timeColumn = curCSV.getString(curCSV.getColumnIndex(Database.DATE));
-            //String temperatureColumn = curCSV.getString(curCSV.getColumnIndex(Database.TEMPERATURE));
-            //String humidityColumn = curCSV.getString(curCSV.getColumnIndex(Database.HUMIDITY));
-            //String lightColumn =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
-
-            //Add Light, temp, humidity, time in to columnNames
-            /*String[] columnNames = {
-                    timeColumn,
-                    //lightColumn,
-                    temperatureColumn,
-                    humidityColumn
-
-                    //curCSV.getColumnName(1),
-                    //curCSV.getColumnName(7),
-                    //curCSV.getColumnName(3),
-                    //curCSV.getColumnName(4),
-                    //curCSV.getColumnName(5),
-                    //curCSV.getColumnName(6),
-                    //curCSV.getColumnName(8)
-            //};
-            */
-
-
-            // Check if it does not exist. If not Create new .csv file.
-            //
-            /*
-            if (.exists()) {
-
-                if (!exportDir.mkdirs()) {
-
-                    Log.e("ScannerService", "failed to create directory");
-                }
-            }
-            */
-
-
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE + " order by Timestamp desc limit 1 ", null);
 
             while (curCSV.moveToNext()) {
 
                 File file = new File(exportDir, "sensor_data.csv");
-
-                //File file = new File(exportDir, curCSV.getString(1)+"-"+time+".csv");
 
                 FileWriter fw = new FileWriter(file, file.exists());
                 CSVWriter writer = new CSVWriter(fw);
@@ -572,24 +532,22 @@ public class RuuviTagScanner extends Service {
                 String timeValue = curCSV.getString(curCSV.getColumnIndex(Database.DATE));
                 String temperatureValue = curCSV.getString(curCSV.getColumnIndex(Database.TEMPERATURE));
                 String humidityValue = curCSV.getString(curCSV.getColumnIndex(Database.HUMIDITY));
-                //String lightColumn =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
+                //String lightValue =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
+                String deviceID = curCSV.getString(curCSV.getColumnIndex(Database.DEVICE_ID));
+
                 String lightValue = "1";
 
                 String[] arrStr = {
-
+                        deviceID,
                         timeValue,
                         lightValue,
                         humidityValue,
                         temperatureValue
-
                 };
-
-
 
                 writer.writeNext(arrStr);
                 writer.close();
                 fw.close();
-
             }
 
             curCSV.close();
