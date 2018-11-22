@@ -91,7 +91,7 @@ public class Dashboard extends Fragment implements SensorEventListener {
 
     Database handler;
     SQLiteDatabase db;
-    Cursor cursor, cursor1;
+    Cursor cursor;
 
     private Timer timer;
     private Handler scanTimerHandler;
@@ -242,68 +242,6 @@ public class Dashboard extends Fragment implements SensorEventListener {
         //Graph
         GraphView graph = (GraphView) view.findViewById(R.id.graph);
         graph.getViewport().setScalable(true);
-
-
-        //List<Integer> time_axis = new ArrayList<>();
-        //List<Integer> temperature_axis = new ArrayList<>();
-        //List<Integer> humidity_axis = new ArrayList<>();
-        //List<Integer> light_axis = new ArrayList<>();
-/*
-        cursor1 = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
-
-        public static void writeCSV(String filepath) {
-
-            File file = new File(filepath);
-
-
-            try {
-                FileWriter outputfile = new FileWriter(file);
-
-                CSVWriter writer = new CSVWriter(outputfile);
-
-                // Once every minute, fetch values corresponding to this time and write this to the data csv.
-
-                String[] data = {time, hum, temp};
-                writer.writeNext(Data);
-            }
-
-            catch (IOException error) {
-                error.printStackTrace();
-                //Log.d("asd", error.printStackTrace());
-            }
-        }
-
-        Dashboard.writeCSV("asd");
-        cursor1 = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE,null);
-
-        while (cursor1 != null & cursor1.moveToNext()) {
-            int graph_humidity = Integer.parseInt(cursor1.getString(cursor1.getColumnIndex(Database.HUMIDITY)));
-            Log.d("urgurg", String.valueOf(graph_humidity));
-            //humidity_axis.add(graph_humidity);
-
-            int graph_temp = Integer.parseInt(cursor1.getString(cursor1.getColumnIndex(Database.TEMPERATURE)));
-            String graph_time = String.valueOf(cursor1.getString(cursor1.getColumnIndex(Database.DATE)));
-            Log.d("asdasd", graph_time);
-            //time_axis.add(graph_time);
-
-            //light_axis.add(graph_light);
-
-            //tempperature_axis.add(graph_temp);
-
-            //String time_string = cursor1.getString(cursor1.getColumnIndex(Database.DATE));
-
-
-            //double graph_time = Double.parseDouble(cursor1.getString(cursor1.getColumnIndex(Database.DATE)));
-
-            String g_time = cursor1.getString(cursor1.getColumnIndex(Database.DATE));
-            //Log.d("funny_cats",String.valueOf(g_time));
-            //String deviceId = cursor1.getString(cursor1.getColumnIndex(Database.DEVICE_ID));
-            //String temperature = cursor1.getString(cursor1.getColumnIndex(Database.TEMPERATURE));
-            //String humidity = cursor1.getString(cursor1.getColumnIndex(Database.HUMIDITY));
-        };
-    }
-
-*/
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 //make loop to add datapoints

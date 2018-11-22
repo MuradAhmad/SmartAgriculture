@@ -504,7 +504,7 @@ public class RuuviTagScanner extends Service {
 
         File exportDir = new File(Environment.getExternalStorageDirectory(), "ruuvitaglogs");
 
-        String time = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        //String time = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
         if (!exportDir.exists()) {
 
@@ -520,74 +520,74 @@ public class RuuviTagScanner extends Service {
 
         try {
 
-            Cursor curCSV = db.rawQuery("SELECT * FROM ruuvitag", null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + Database.DEVICE_TABLE, null);
 
 
+            //String timeColumn = curCSV.getString(curCSV.getColumnIndex(Database.DATE));
+            //String temperatureColumn = curCSV.getString(curCSV.getColumnIndex(Database.TEMPERATURE));
+            //String humidityColumn = curCSV.getString(curCSV.getColumnIndex(Database.HUMIDITY));
+            //String lightColumn =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
 
-            String[] columnNames = {
+            //Add Light, temp, humidity, time in to columnNames
+            /*String[] columnNames = {
+                    timeColumn,
+                    //lightColumn,
+                    temperatureColumn,
+                    humidityColumn
 
-                    curCSV.getColumnName(1),
+                    //curCSV.getColumnName(1),
+                    //curCSV.getColumnName(7),
+                    //curCSV.getColumnName(3),
+                    //curCSV.getColumnName(4),
+                    //curCSV.getColumnName(5),
+                    //curCSV.getColumnName(6),
+                    //curCSV.getColumnName(8)
+            //};
+            */
 
-                    curCSV.getColumnName(7),
 
-                    curCSV.getColumnName(3),
+            // Check if it does not exist. If not Create new .csv file.
+            //
+            /*
+            if (.exists()) {
 
-                    curCSV.getColumnName(4),
+                if (!exportDir.mkdirs()) {
 
-                    curCSV.getColumnName(5),
-
-                    curCSV.getColumnName(6),
-
-                    curCSV.getColumnName(8)
-
-            };
+                    Log.e("ScannerService", "failed to create directory");
+                }
+            }
+            */
 
 
 
             while (curCSV.moveToNext()) {
 
-                File file = new File(exportDir, curCSV.getString(1)+"-"+time+".csv");
+                File file = new File(exportDir, "sensor_data.csv");
+
+                //File file = new File(exportDir, curCSV.getString(1)+"-"+time+".csv");
 
                 FileWriter fw = new FileWriter(file, file.exists());
-
-
-
                 CSVWriter writer = new CSVWriter(fw);
 
-
-
-                if(file.length() <= 0) {
-
-                    writer.writeNext(columnNames);
-
-                }
-
-
+                String timeValue = curCSV.getString(curCSV.getColumnIndex(Database.DATE));
+                String temperatureValue = curCSV.getString(curCSV.getColumnIndex(Database.TEMPERATURE));
+                String humidityValue = curCSV.getString(curCSV.getColumnIndex(Database.HUMIDITY));
+                //String lightColumn =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
+                String lightValue = "1";
 
                 String[] arrStr = {
 
-                        curCSV.getString(1),
-
-                        curCSV.getString(7),
-
-                        curCSV.getString(3),
-
-                        curCSV.getString(4),
-
-                        curCSV.getString(5),
-
-                        curCSV.getString(6),
-
-                        curCSV.getString(9).substring(12, 20)
+                        timeValue,
+                        lightValue,
+                        humidityValue,
+                        temperatureValue
 
                 };
 
 
 
                 writer.writeNext(arrStr);
-
                 writer.close();
-
                 fw.close();
 
             }

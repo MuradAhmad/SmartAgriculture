@@ -37,7 +37,6 @@
         <activity android:name="com.example.muradahmad.smartAgriculture.Settings" />
 
 
-
         <service
             android:name="com.example.muradahmad.smartAgriculture.RuuviTagScanner"
             android:enabled="true"
