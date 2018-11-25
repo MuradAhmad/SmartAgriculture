@@ -46,30 +46,15 @@ import java.util.concurrent.ScheduledExecutorService;
  * Created by muradahmad on 07/08/2018.
  */
 
-public class Dashboard extends Fragment implements SensorEventListener {
+public class Dashboard extends Fragment  {
 
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-        if(event.sensor.getType() == sensor.TYPE_LIGHT){
-            txtluminous.setText(""+ event.values[0]);
-            Log.d("sensor Light",""+ event.values[0]);
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
 
     private class LeScanResult {
         BluetoothDevice device;
         int rssi;
         byte[] scanData;
     }
-
-
 
     String strTemperature;
 
@@ -106,8 +91,6 @@ public class Dashboard extends Fragment implements SensorEventListener {
     private Region beaconRegion = null;
 
 
-    Sensor sensor;
-    SensorManager sensorManager;
 
 
     TextView txtTemperature, txtHumidity, txtDeviceId,  txtluminous;
@@ -122,14 +105,6 @@ public class Dashboard extends Fragment implements SensorEventListener {
         txtDeviceId = view.findViewById(R.id.txtDeviceId);
         txtHumidity = view.findViewById(R.id.txtHumidity);
         txtluminous = view.findViewById(R.id.txtlight);
-
-
-
-
-
-
-        sensorManager = (SensorManager) getContext().getSystemService(Service.SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
 
         handler = new Database(getContext());
@@ -270,13 +245,13 @@ public class Dashboard extends Fragment implements SensorEventListener {
     @Override
     public void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(this);
+      //  sensorManager.unregisterListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
+       // sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
 
     }
 }

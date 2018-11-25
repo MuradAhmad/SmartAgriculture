@@ -17,6 +17,10 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -48,7 +52,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class RuuviTagScanner extends Service {
+public class RuuviTagScanner extends Service implements SensorEventListener {
     public RuuviTagScanner() {
     }
 
@@ -61,6 +65,26 @@ public class RuuviTagScanner extends Service {
         int rssi;
         byte[] scanData;
     }
+
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+        if(event.sensor.getType() == sensor.TYPE_LIGHT){
+
+
+            lightData = String.valueOf(event.values[0]);
+            Log.d("sensor Light",""+ event.values[0]);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+
 
     List<RuuviTag> ruuvitagArrayList;
     //private BeaconManager beaconManager;
@@ -89,12 +113,29 @@ public class RuuviTagScanner extends Service {
     String strTemperature, strHumidity;
 
 
+
+    String lightData;
+
+    Sensor sensor;
+    SensorManager sensorManager = null;
+
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Bundle data = intent.getExtras();
         if (data != null) {
             save((RuuviTag) data.getParcelable("favorite"));
         }
+
+
+        // light sensor data
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
+
+
         return Service.START_NOT_STICKY;
     }
 
@@ -398,12 +439,11 @@ public class RuuviTagScanner extends Service {
         if (!Exists(ruuvitag.getId())) {
             ContentValues values = new ContentValues();
             values.put(Database.DEVICE_ID, ruuvitag.getId());
-            //
             values.put(Database.URL, ruuvitag.getUrl());
             values.put(Database.RSSI, ruuvitag.getRssi());
             values.put(Database.TEMPERATURE, ruuvitag.getTemperature());
             values.put(Database.HUMIDITY, ruuvitag.getHumidity());
-            //values.put(Database.PRESSURE, ruuvitag.getPressure());
+            values.put(Database.LIGHT, lightData);
             values.put(Database.DATE, time);
             //values.put(DBContract.RuuvitagDB.COLUMN_VALUES, "-500,-500,-500,-500,-500,-500,-500,-500");
 
@@ -422,7 +462,7 @@ public class RuuviTagScanner extends Service {
             values.put(Database.RSSI, ruuvitag.getRssi());
             values.put(Database.TEMPERATURE, ruuvitag.getTemperature());
             values.put(Database.HUMIDITY, ruuvitag.getHumidity());
-            //values.put(Database.PRESSURE, ruuvitag.getPressure());
+            values.put(Database.LIGHT, lightData);
             values.put(Database.DATE, time);
 
             db.update(Database.DEVICE_TABLE, values, "id=" + DatabaseUtils.sqlEscapeString(ruuvitag.getId()), null);
@@ -532,10 +572,10 @@ public class RuuviTagScanner extends Service {
                 String timeValue = curCSV.getString(curCSV.getColumnIndex(Database.DATE));
                 String temperatureValue = curCSV.getString(curCSV.getColumnIndex(Database.TEMPERATURE));
                 String humidityValue = curCSV.getString(curCSV.getColumnIndex(Database.HUMIDITY));
-                //String lightValue =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
+                String lightValue =  curCSV.getString(curCSV.getColumnIndex(Database.LIGHT));
                 String deviceID = curCSV.getString(curCSV.getColumnIndex(Database.DEVICE_ID));
 
-                String lightValue = "1";
+
 
                 String[] arrStr = {
                         deviceID,
