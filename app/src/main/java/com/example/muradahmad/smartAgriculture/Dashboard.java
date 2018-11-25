@@ -131,12 +131,13 @@ public class Dashboard extends Fragment  {
                         String temperature = cursor.getString(cursor.getColumnIndex(Database.TEMPERATURE));
                         String humidity = cursor.getString(cursor.getColumnIndex(Database.HUMIDITY));
                         //String time = cursor.getString(cursor.getColumnIndex(Database.DATE));
-                        //String light = cursor.getString(cursor.getColumnIndex(Database.LIGHT));
+                        String light = cursor.getString(cursor.getColumnIndex(Database.LIGHT));
 
 
                         txtDeviceId.setText(deviceId);
                         txtTemperature.setText(temperature + " °C ");
                         txtHumidity.setText(humidity + " % ");
+                        txtluminous.setText(light + " lm ");
 
 
                         strTemperature =temperature;

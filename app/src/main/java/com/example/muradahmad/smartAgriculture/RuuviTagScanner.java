@@ -114,6 +114,7 @@ public class RuuviTagScanner extends Service implements SensorEventListener {
 
 
 
+    // light sensor
     String lightData;
 
     Sensor sensor;
